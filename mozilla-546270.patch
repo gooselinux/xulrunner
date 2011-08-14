@@ -1,0 +1,19 @@
+diff -up mozilla-1.9.2/dom/base/nsGlobalWindow.cpp.546270 mozilla-1.9.2/dom/base/nsGlobalWindow.cpp
+--- mozilla-1.9.2/dom/base/nsGlobalWindow.cpp.546270	2010-05-13 22:41:21.000000000 +0200
++++ mozilla-1.9.2/dom/base/nsGlobalWindow.cpp	2010-05-17 10:09:10.000000000 +0200
+@@ -4536,9 +4536,12 @@ nsGlobalWindow::Print()
+         printSettingsService->GetGlobalPrintSettings(getter_AddRefs(printSettings));
+ 
+         nsXPIDLString printerName;
+-        printSettingsService->GetDefaultPrinterName(getter_Copies(printerName));
+-        if (printerName)
+-          printSettingsService->InitPrintSettingsFromPrinter(printerName, printSettings);
++        printSettings->GetPrinterName(getter_Copies(printerName));
++        if (printerName.IsEmpty()) {
++          printSettingsService->GetDefaultPrinterName(getter_Copies(printerName));
++          printSettings->SetPrinterName(printerName);
++        }
++        printSettingsService->InitPrintSettingsFromPrinter(printerName, printSettings);
+         printSettingsService->InitPrintSettingsFromPrefs(printSettings, 
+                                                          PR_TRUE, 
+                                                          nsIPrintSettings::kInitSaveAll);
