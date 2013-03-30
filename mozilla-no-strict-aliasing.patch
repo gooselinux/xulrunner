@@ -1,0 +1,15 @@
+diff -up mozilla-1.9.2/js/src/Makefile.in.nostrictalias mozilla-1.9.2/js/src/Makefile.in
+--- mozilla-1.9.2/js/src/Makefile.in.nostrictalias	2010-11-22 13:45:56.000000000 +0100
++++ mozilla-1.9.2/js/src/Makefile.in	2010-11-25 15:47:08.752197262 +0100
+@@ -87,9 +87,9 @@ MODULE_OPTIMIZE_FLAGS = -O2 -ip
+ #XXX: do we want different INTERP_OPTIMIZER flags here?
+ endif
+ else # not INTEL_CXX
+-MODULE_OPTIMIZE_FLAGS = -O3 -fstrict-aliasing $(MOZ_OPTIMIZE_SIZE_TWEAK)
++MODULE_OPTIMIZE_FLAGS = -O3 -fno-strict-aliasing $(MOZ_OPTIMIZE_SIZE_TWEAK)
+ # Special optimization flags for jsinterp.c
+-INTERP_OPTIMIZER = -O3 -fstrict-aliasing
++INTERP_OPTIMIZER = -O3 -fno-strict-aliasing
+ endif
+ else # not GNU_CXX
+ ifeq ($(OS_ARCH),SunOS)
