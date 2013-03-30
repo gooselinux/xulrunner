@@ -26,8 +26,8 @@
 
 Summary:        XUL Runtime for Gecko Applications
 Name:           xulrunner
-Version:        1.9.2.15
-Release:        2%{?pretag}%{?dist}
+Version:        1.9.2.17
+Release:        4%{?pretag}%{?dist}
 URL:            http://developer.mozilla.org/En/XULRunner
 License:        MPLv1.1 or GPLv2+ or LGPLv2+
 Group:          Applications/Internet
@@ -53,8 +53,7 @@ Patch20:        mozilla-192-pkgconfig.patch
 
 # Upstream patches
 Patch101:       mozilla-546270.patch
-Patch102:       mozilla-642395.patch
-Patch103:       mozilla-642395-2.patch
+Patch102:       mozilla-comodo-646460.patch
 
 # ---------------------------------------------------
 
@@ -156,8 +155,7 @@ sed -e 's/__RPM_VERSION_INTERNAL__/%{version_internal}/' %{P:%%PATCH0} \
 %patch20 -p1 -b .pk
 
 %patch101 -p1 -b .546270
-%patch102 -p1 -b .642395
-%patch103 -p1 -b .642395-2
+%patch102 -p1 -b .646460
 
 %{__rm} -f .mozconfig
 %{__cp} %{SOURCE10} .mozconfig
@@ -445,6 +443,12 @@ fi
 #---------------------------------------------------------------------
 
 %changelog
+* Thu Apr 21 2011 Jan Horak <jhorak@redhat.com> - 1.9.2.17-4
+- Rebuild
+
+* Fri Apr 15 2011 Jan Horak <jhorak@redhat.com> - 1.9.2.17-3
+- Update to 1.9.2.17
+
 * Fri Mar 18 2011 Jan Horak <jhorak@redhat.com> - 1.9.2.15-2
 - Fixed mozbz#642395
 
