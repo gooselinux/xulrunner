@@ -1,0 +1,13 @@
+pref("app.update.enabled", false);
+pref("app.update.autoInstallEnabled", false);
+pref("browser.display.use_system_colors",   true);
+pref("browser.link.open_external",          3);
+pref("general.smoothScroll",                true);
+pref("general.useragent.vendor", "Red Hat");
+pref("general.useragent.vendorSub", "RPM_VERREL");
+pref("intl.locale.matchOS", true);
+pref("toolkit.networkmanager.disable", false);
+pref("toolkit.storage.synchronous", 0);
+pref("browser.startup.homepage", "http://www.redhat.com");
+pref("startup.homepage_override_url", "http://www.redhat.com");
+pref("startup.homepage_welcome_url", "http://www.redhat.com");
